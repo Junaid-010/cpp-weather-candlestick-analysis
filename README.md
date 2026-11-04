@@ -17,13 +17,12 @@ A technical analysis and time-series modeling tool written in C++ using Object-O
 
 ---
 
-## Project Structure
+## Code Structure
 
-```text
-├── CandlestickData.h / .cpp    # Candlestick entity class & aggregation logic[cite: 98, 166]
-├── CandlestickGraph.h / .cpp   # Terminal ASCII graph rendering & scaling engine[cite: 102, 103, 166]
-├── CSVReader.h / .cpp          # Fast CSV parsing & tokenization
-├── DataFiltering.h / .cpp      # Date & temperature boundary filter routines[cite: 106, 166]
-├── DataPrediction.h / .cpp     # Multi-year delta trend extrapolation[cite: 109, 166]
-├── main.cpp                    # Interactive terminal menu loop[cite: 166]
-└── weather_data.csv            # Historical hourly meteorological dataset[cite: 167]
+* **`CandlestickData`**: Holds the core candlestick fields (date, open, high, low, close) and turns the raw hourly rows into yearly summaries[cite: 98, 99].
+* **`CandlestickGraph`**: Handles drawing the charts in your terminal[cite: 101]. It checks the min and max temperatures to scale everything properly and prints out the candlesticks using standard ASCII characters[cite: 101, 103].
+* **`CSVReader`**: Simple parser that reads the weather data from disk and loads it into memory[cite: 97, 98].
+* **`DataFiltering`**: Lets you slice the records down by choosing a specific year range or setting temperature limits[cite: 104, 106].
+* **`DataPrediction`**: Looks at the year-over-year changes in highs, lows, and closing averages to forecast values for upcoming years[cite: 109, 110].
+* **`main.cpp`**: The main entry point that runs the interactive console menu[cite: 105, 107].
+* **`sample_weather_data.csv`**: A small cut of the full dataset so anyone cloning the repo can compile and test the app right away.
